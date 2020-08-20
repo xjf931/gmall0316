@@ -7,57 +7,51 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-/**
- * <p>
- * SpuImage
- * </p>
- *
- */
+/** SpuImage */
 @Data
 @ApiModel(description = "Spu图片")
 @TableName("spu_image")
 public class SpuImage extends BaseEntity {
-	
-	private static final long serialVersionUID = 1L;
-	
-	@ApiModelProperty(value = "商品id")
-	@TableField("spu_id")
-	private Long spuId;
 
-	@ApiModelProperty(value = "图片名称")
-	@TableField("img_name")
-	private String imgName;
+  private static final long serialVersionUID = 1L;
 
-	@ApiModelProperty(value = "图片路径")
-	@TableField("img_url")
-	private String imgUrl;
+  @ApiModelProperty(value = "商品id")
+  @TableField("spu_id")
+  private Long spuId;
 
-	public static long getSerialVersionUID() {
-		return serialVersionUID;
-	}
+  @ApiModelProperty(value = "图片名称")
+  @TableField("img_name")
+  private String imgName;
 
-	public Long getSpuId() {
-		return spuId;
-	}
+  @ApiModelProperty(value = "图片路径")
+  @TableField("img_url")
+  private String imgUrl;
 
-	public void setSpuId(Long spuId) {
-		this.spuId = spuId;
-	}
+  public static long getSerialVersionUID() {
+    return serialVersionUID;
+  }
 
-	public String getImgName() {
-		return imgName;
-	}
+  public Long getSpuId() {
+    return spuId;
+  }
 
-	public void setImgName(String imgName) {
-		this.imgName = imgName;
-	}
+  public void setSpuId(Long spuId) {
+    this.spuId = spuId;
+  }
 
-	public String getImgUrl() {
-		return imgUrl;
-	}
+  public String getImgName() {
+    return imgName;
+  }
 
-	public void setImgUrl(String imgUrl) {
-		this.imgUrl = imgUrl;
-	}
+  public void setImgName(String imgName) {
+    this.imgName = imgName;
+  }
+
+  public String getImgUrl() {
+    return imgUrl;
+  }
+
+  public void setImgUrl(String imgUrl) {
+    this.imgUrl = imgUrl;
+  }
 }
-

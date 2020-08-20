@@ -12,74 +12,70 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-/**
- * HttpClient类 微信：
- *
- */
+/** HttpClient类 微信： */
 public class HttpClientUtil {
 
-    public static String doGet(String url)   {
+  public static String doGet(String url) {
 
-        // 创建Httpclient对象
-        CloseableHttpClient httpclient = HttpClients.createDefault();
-        // 创建http GET请求
-        HttpGet httpGet = new HttpGet(url);
-        CloseableHttpResponse response = null;
-        try {
-            // 执行请求
-            response = httpclient.execute(httpGet);
-            // 判断返回状态是否为200
-            if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-                HttpEntity entity = response.getEntity();
-                String result = EntityUtils.toString(entity, "UTF-8");
-                EntityUtils.consume(entity);
-                httpclient.close();
-                return result;
-            }
-            httpclient.close();
-        }catch (IOException e){
-            e.printStackTrace();
-            return null;
-        }
-
-        return  null;
+    // 创建Httpclient对象
+    CloseableHttpClient httpclient = HttpClients.createDefault();
+    // 创建http GET请求
+    HttpGet httpGet = new HttpGet(url);
+    CloseableHttpResponse response = null;
+    try {
+      // 执行请求
+      response = httpclient.execute(httpGet);
+      // 判断返回状态是否为200
+      if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+        HttpEntity entity = response.getEntity();
+        String result = EntityUtils.toString(entity, "UTF-8");
+        EntityUtils.consume(entity);
+        httpclient.close();
+        return result;
+      }
+      httpclient.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+      return null;
     }
 
+    return null;
+  }
 
-    public static void download(String url,String fileName)   {
+  public static void download(String url, String fileName) {
 
-        // 创建Httpclient对象
-        CloseableHttpClient httpclient = HttpClients.createDefault();
-        // 创建http GET请求
-        HttpGet httpGet = new HttpGet(url);
-        CloseableHttpResponse response = null;
-        try {
-            // 执行请求
-            response = httpclient.execute(httpGet);
-            // 判断返回状态是否为200
-            if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-                HttpEntity entity = response.getEntity();
+    // 创建Httpclient对象
+    CloseableHttpClient httpclient = HttpClients.createDefault();
+    // 创建http GET请求
+    HttpGet httpGet = new HttpGet(url);
+    CloseableHttpResponse response = null;
+    try {
+      // 执行请求
+      response = httpclient.execute(httpGet);
+      // 判断返回状态是否为200
+      if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+        HttpEntity entity = response.getEntity();
 
-               // String result = EntityUtils.toString(entity, "UTF-8");
-                byte[] bytes = EntityUtils.toByteArray(entity);
-                File file =new File(fileName);
-               //  InputStream in = entity.getContent();
-                FileOutputStream fout = new FileOutputStream(file);
-                fout.write(bytes);
+        // String result = EntityUtils.toString(entity, "UTF-8");
+        byte[] bytes = EntityUtils.toByteArray(entity);
+        File file = new File(fileName);
+        //  InputStream in = entity.getContent();
+        FileOutputStream fout = new FileOutputStream(file);
+        fout.write(bytes);
 
-                EntityUtils.consume(entity);
+        EntityUtils.consume(entity);
 
-                httpclient.close();
-                fout.flush();
-                fout.close();
-                return  ;
-            }
-            httpclient.close();
-        }catch (IOException e){
-            e.printStackTrace();
-            return  ;
-        }
-
-        return   ;
+        httpclient.close();
+        fout.flush();
+        fout.close();
+        return;
+      }
+      httpclient.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+      return;
     }
+
+    return;
+  }
 }

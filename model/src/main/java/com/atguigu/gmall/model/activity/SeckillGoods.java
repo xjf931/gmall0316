@@ -14,179 +14,178 @@ import java.util.Date;
 @ApiModel(description = "SeckillGoods")
 @TableName("seckill_goods")
 public class SeckillGoods extends BaseEntity {
-	
-	private static final long serialVersionUID = 1L;
-	
-	@ApiModelProperty(value = "spu ID")
-	@TableField("spu_id")
-	private Long spuId;
 
-	@ApiModelProperty(value = "sku ID")
-	@TableField("sku_id")
-	private Long skuId;
+  private static final long serialVersionUID = 1L;
 
-	@ApiModelProperty(value = "标题")
-	@TableField("sku_name")
-	private String skuName;
+  @ApiModelProperty(value = "spu ID")
+  @TableField("spu_id")
+  private Long spuId;
 
-	@ApiModelProperty(value = "商品图片")
-	@TableField("sku_default_img")
-	private String skuDefaultImg;
+  @ApiModelProperty(value = "sku ID")
+  @TableField("sku_id")
+  private Long skuId;
 
-	@ApiModelProperty(value = "原价格")
-	@TableField("price")
-	private BigDecimal price;
+  @ApiModelProperty(value = "标题")
+  @TableField("sku_name")
+  private String skuName;
 
-	@ApiModelProperty(value = "秒杀价格")
-	@TableField("cost_price")
-	private BigDecimal costPrice;
+  @ApiModelProperty(value = "商品图片")
+  @TableField("sku_default_img")
+  private String skuDefaultImg;
 
-	@ApiModelProperty(value = "添加日期")
-	@TableField("create_time")
-	private Date createTime;
+  @ApiModelProperty(value = "原价格")
+  @TableField("price")
+  private BigDecimal price;
 
-	@ApiModelProperty(value = "审核日期")
-	@TableField("check_time")
-	private Date checkTime;
+  @ApiModelProperty(value = "秒杀价格")
+  @TableField("cost_price")
+  private BigDecimal costPrice;
 
-	@ApiModelProperty(value = "审核状态")
-	@TableField("status")
-	private String status;
+  @ApiModelProperty(value = "添加日期")
+  @TableField("create_time")
+  private Date createTime;
 
-	@ApiModelProperty(value = "开始时间")
-	@TableField("start_time")
-	private Date startTime;
+  @ApiModelProperty(value = "审核日期")
+  @TableField("check_time")
+  private Date checkTime;
 
-	@ApiModelProperty(value = "结束时间")
-	@TableField("end_time")
-	private Date endTime;
+  @ApiModelProperty(value = "审核状态")
+  @TableField("status")
+  private String status;
 
-	@ApiModelProperty(value = "秒杀商品数")
-	@TableField("num")
-	private Integer num;
+  @ApiModelProperty(value = "开始时间")
+  @TableField("start_time")
+  private Date startTime;
 
-	@ApiModelProperty(value = "剩余库存数")
-	@TableField("stock_count")
-	private Integer stockCount;
+  @ApiModelProperty(value = "结束时间")
+  @TableField("end_time")
+  private Date endTime;
 
-	@ApiModelProperty(value = "描述")
-	@TableField("sku_desc")
-	private String skuDesc;
+  @ApiModelProperty(value = "秒杀商品数")
+  @TableField("num")
+  private Integer num;
 
-	public static long getSerialVersionUID() {
-		return serialVersionUID;
-	}
+  @ApiModelProperty(value = "剩余库存数")
+  @TableField("stock_count")
+  private Integer stockCount;
 
-	public Long getSpuId() {
-		return spuId;
-	}
+  @ApiModelProperty(value = "描述")
+  @TableField("sku_desc")
+  private String skuDesc;
 
-	public void setSpuId(Long spuId) {
-		this.spuId = spuId;
-	}
+  public static long getSerialVersionUID() {
+    return serialVersionUID;
+  }
 
-	public Long getSkuId() {
-		return skuId;
-	}
+  public Long getSpuId() {
+    return spuId;
+  }
 
-	public void setSkuId(Long skuId) {
-		this.skuId = skuId;
-	}
+  public void setSpuId(Long spuId) {
+    this.spuId = spuId;
+  }
 
-	public String getSkuName() {
-		return skuName;
-	}
+  public Long getSkuId() {
+    return skuId;
+  }
 
-	public void setSkuName(String skuName) {
-		this.skuName = skuName;
-	}
+  public void setSkuId(Long skuId) {
+    this.skuId = skuId;
+  }
 
-	public String getSkuDefaultImg() {
-		return skuDefaultImg;
-	}
+  public String getSkuName() {
+    return skuName;
+  }
 
-	public void setSkuDefaultImg(String skuDefaultImg) {
-		this.skuDefaultImg = skuDefaultImg;
-	}
+  public void setSkuName(String skuName) {
+    this.skuName = skuName;
+  }
 
-	public BigDecimal getPrice() {
-		return price;
-	}
+  public String getSkuDefaultImg() {
+    return skuDefaultImg;
+  }
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
+  public void setSkuDefaultImg(String skuDefaultImg) {
+    this.skuDefaultImg = skuDefaultImg;
+  }
 
-	public BigDecimal getCostPrice() {
-		return costPrice;
-	}
+  public BigDecimal getPrice() {
+    return price;
+  }
 
-	public void setCostPrice(BigDecimal costPrice) {
-		this.costPrice = costPrice;
-	}
+  public void setPrice(BigDecimal price) {
+    this.price = price;
+  }
 
-	public Date getCreateTime() {
-		return createTime;
-	}
+  public BigDecimal getCostPrice() {
+    return costPrice;
+  }
 
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
+  public void setCostPrice(BigDecimal costPrice) {
+    this.costPrice = costPrice;
+  }
 
-	public Date getCheckTime() {
-		return checkTime;
-	}
+  public Date getCreateTime() {
+    return createTime;
+  }
 
-	public void setCheckTime(Date checkTime) {
-		this.checkTime = checkTime;
-	}
+  public void setCreateTime(Date createTime) {
+    this.createTime = createTime;
+  }
 
-	public String getStatus() {
-		return status;
-	}
+  public Date getCheckTime() {
+    return checkTime;
+  }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+  public void setCheckTime(Date checkTime) {
+    this.checkTime = checkTime;
+  }
 
-	public Date getStartTime() {
-		return startTime;
-	}
+  public String getStatus() {
+    return status;
+  }
 
-	public void setStartTime(Date startTime) {
-		this.startTime = startTime;
-	}
+  public void setStatus(String status) {
+    this.status = status;
+  }
 
-	public Date getEndTime() {
-		return endTime;
-	}
+  public Date getStartTime() {
+    return startTime;
+  }
 
-	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
-	}
+  public void setStartTime(Date startTime) {
+    this.startTime = startTime;
+  }
 
-	public Integer getNum() {
-		return num;
-	}
+  public Date getEndTime() {
+    return endTime;
+  }
 
-	public void setNum(Integer num) {
-		this.num = num;
-	}
+  public void setEndTime(Date endTime) {
+    this.endTime = endTime;
+  }
 
-	public Integer getStockCount() {
-		return stockCount;
-	}
+  public Integer getNum() {
+    return num;
+  }
 
-	public void setStockCount(Integer stockCount) {
-		this.stockCount = stockCount;
-	}
+  public void setNum(Integer num) {
+    this.num = num;
+  }
 
-	public String getSkuDesc() {
-		return skuDesc;
-	}
+  public Integer getStockCount() {
+    return stockCount;
+  }
 
-	public void setSkuDesc(String skuDesc) {
-		this.skuDesc = skuDesc;
-	}
+  public void setStockCount(Integer stockCount) {
+    this.stockCount = stockCount;
+  }
+
+  public String getSkuDesc() {
+    return skuDesc;
+  }
+
+  public void setSkuDesc(String skuDesc) {
+    this.skuDesc = skuDesc;
+  }
 }
-

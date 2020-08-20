@@ -7,84 +7,72 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-
-/**
- * <p>
- * SpuSaleAttrValue
- * </p>
- *
- */
+/** SpuSaleAttrValue */
 @Data
 @ApiModel(description = "销售属性值")
 @TableName("spu_sale_attr_value")
 public class SpuSaleAttrValue extends BaseEntity {
-	
-	private static final long serialVersionUID = 1L;
-	
-	@ApiModelProperty(value = "商品id")
-	@TableField("spu_id")
-	private Long spuId;
 
-	@ApiModelProperty(value = "销售属性id")
-	@TableField("base_sale_attr_id")
-	private Long baseSaleAttrId;
+  private static final long serialVersionUID = 1L;
+  // 是否是默认选中状态
+  //	@TableField("sale_attr_name")
+  //	String isChecked;
+  @TableField(exist = false)
+  String isChecked;
+  @ApiModelProperty(value = "商品id")
+  @TableField("spu_id")
+  private Long spuId;
+  @ApiModelProperty(value = "销售属性id")
+  @TableField("base_sale_attr_id")
+  private Long baseSaleAttrId;
+  @ApiModelProperty(value = "销售属性值名称")
+  @TableField("sale_attr_value_name")
+  private String saleAttrValueName;
+  @ApiModelProperty(value = "销售属性名称(冗余)")
+  @TableField("sale_attr_name")
+  private String saleAttrName;
 
-	@ApiModelProperty(value = "销售属性值名称")
-	@TableField("sale_attr_value_name")
-	private String saleAttrValueName;
+  public static long getSerialVersionUID() {
+    return serialVersionUID;
+  }
 
-	@ApiModelProperty(value = "销售属性名称(冗余)")
-	@TableField("sale_attr_name")
-	private String saleAttrName;
+  public Long getSpuId() {
+    return spuId;
+  }
 
-	// 是否是默认选中状态
-//	@TableField("sale_attr_name")
-//	String isChecked;
-	@TableField(exist = false)
-	String isChecked;
+  public void setSpuId(Long spuId) {
+    this.spuId = spuId;
+  }
 
-	public static long getSerialVersionUID() {
-		return serialVersionUID;
-	}
+  public Long getBaseSaleAttrId() {
+    return baseSaleAttrId;
+  }
 
-	public Long getSpuId() {
-		return spuId;
-	}
+  public void setBaseSaleAttrId(Long baseSaleAttrId) {
+    this.baseSaleAttrId = baseSaleAttrId;
+  }
 
-	public void setSpuId(Long spuId) {
-		this.spuId = spuId;
-	}
+  public String getSaleAttrValueName() {
+    return saleAttrValueName;
+  }
 
-	public Long getBaseSaleAttrId() {
-		return baseSaleAttrId;
-	}
+  public void setSaleAttrValueName(String saleAttrValueName) {
+    this.saleAttrValueName = saleAttrValueName;
+  }
 
-	public void setBaseSaleAttrId(Long baseSaleAttrId) {
-		this.baseSaleAttrId = baseSaleAttrId;
-	}
+  public String getSaleAttrName() {
+    return saleAttrName;
+  }
 
-	public String getSaleAttrValueName() {
-		return saleAttrValueName;
-	}
+  public void setSaleAttrName(String saleAttrName) {
+    this.saleAttrName = saleAttrName;
+  }
 
-	public void setSaleAttrValueName(String saleAttrValueName) {
-		this.saleAttrValueName = saleAttrValueName;
-	}
+  public String getIsChecked() {
+    return isChecked;
+  }
 
-	public String getSaleAttrName() {
-		return saleAttrName;
-	}
-
-	public void setSaleAttrName(String saleAttrName) {
-		this.saleAttrName = saleAttrName;
-	}
-
-	public String getIsChecked() {
-		return isChecked;
-	}
-
-	public void setIsChecked(String isChecked) {
-		this.isChecked = isChecked;
-	}
+  public void setIsChecked(String isChecked) {
+    this.isChecked = isChecked;
+  }
 }
-

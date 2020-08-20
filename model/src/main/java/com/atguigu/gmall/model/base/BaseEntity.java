@@ -10,16 +10,15 @@ import java.io.Serializable;
 @Data
 public class BaseEntity implements Serializable {
 
-    @ApiModelProperty(value = "id")
-    @TableId(type = IdType.AUTO)
-    private Long id;
+  @ApiModelProperty(value = "id")
+  @TableId(type = IdType.AUTO)
+  private Long id;
 
+  public Long getId() {
+    return id;
+  }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
 }

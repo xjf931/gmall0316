@@ -6,72 +6,67 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+
 import java.util.List;
 
-/**
- * <p>
- * BaseAttrInfo
- * </p>
- *
- */
+/** BaseAttrInfo */
 @Data
 @ApiModel(description = "平台属性")
 @TableName("base_attr_info")
 public class BaseAttrInfo extends BaseEntity {
-	
-	private static final long serialVersionUID = 1L;
-	
-	@ApiModelProperty(value = "属性名称")
-	@TableField("attr_name")
-	private String attrName;
 
-	@ApiModelProperty(value = "分类id")
-	@TableField("category_id")
-	private Long categoryId;
+  private static final long serialVersionUID = 1L;
 
-	@ApiModelProperty(value = "分类层级")
-	@TableField("category_level")
-	private Integer categoryLevel;
+  @ApiModelProperty(value = "属性名称")
+  @TableField("attr_name")
+  private String attrName;
 
-	//  平台属性值集合 表示非数据库字段
-	//  当通过分类Id 查询数据的时候，将平台属性值一起查询出来 {1:n}
-	@TableField(exist = false)
-	private List<BaseAttrValue> attrValueList;
+  @ApiModelProperty(value = "分类id")
+  @TableField("category_id")
+  private Long categoryId;
 
-	public static long getSerialVersionUID() {
-		return serialVersionUID;
-	}
+  @ApiModelProperty(value = "分类层级")
+  @TableField("category_level")
+  private Integer categoryLevel;
 
-	public String getAttrName() {
-		return attrName;
-	}
+  //  平台属性值集合 表示非数据库字段
+  //  当通过分类Id 查询数据的时候，将平台属性值一起查询出来 {1:n}
+  @TableField(exist = false)
+  private List<BaseAttrValue> attrValueList;
 
-	public void setAttrName(String attrName) {
-		this.attrName = attrName;
-	}
+  public static long getSerialVersionUID() {
+    return serialVersionUID;
+  }
 
-	public Long getCategoryId() {
-		return categoryId;
-	}
+  public String getAttrName() {
+    return attrName;
+  }
 
-	public void setCategoryId(Long categoryId) {
-		this.categoryId = categoryId;
-	}
+  public void setAttrName(String attrName) {
+    this.attrName = attrName;
+  }
 
-	public Integer getCategoryLevel() {
-		return categoryLevel;
-	}
+  public Long getCategoryId() {
+    return categoryId;
+  }
 
-	public void setCategoryLevel(Integer categoryLevel) {
-		this.categoryLevel = categoryLevel;
-	}
+  public void setCategoryId(Long categoryId) {
+    this.categoryId = categoryId;
+  }
 
-	public List<BaseAttrValue> getAttrValueList() {
-		return attrValueList;
-	}
+  public Integer getCategoryLevel() {
+    return categoryLevel;
+  }
 
-	public void setAttrValueList(List<BaseAttrValue> attrValueList) {
-		this.attrValueList = attrValueList;
-	}
+  public void setCategoryLevel(Integer categoryLevel) {
+    this.categoryLevel = categoryLevel;
+  }
+
+  public List<BaseAttrValue> getAttrValueList() {
+    return attrValueList;
+  }
+
+  public void setAttrValueList(List<BaseAttrValue> attrValueList) {
+    this.attrValueList = attrValueList;
+  }
 }
-

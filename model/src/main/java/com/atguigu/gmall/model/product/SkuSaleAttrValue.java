@@ -7,57 +7,51 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-/**
- * <p>
- * SkuSaleAttrValue
- * </p>
- *
- */
+/** SkuSaleAttrValue */
 @Data
 @ApiModel(description = "Sku销售属性值")
 @TableName("sku_sale_attr_value")
 public class SkuSaleAttrValue extends BaseEntity {
-	
-	private static final long serialVersionUID = 1L;
-	
-	@ApiModelProperty(value = "库存单元id")
-	@TableField("sku_id")
-	private Long skuId;
 
-	@ApiModelProperty(value = "spu_id(冗余)")
-	@TableField("spu_id")
-	private Long spuId;
+  private static final long serialVersionUID = 1L;
 
-	@ApiModelProperty(value = "销售属性值id")
-	@TableField("sale_attr_value_id")
-	private Long saleAttrValueId;
+  @ApiModelProperty(value = "库存单元id")
+  @TableField("sku_id")
+  private Long skuId;
 
-	public static long getSerialVersionUID() {
-		return serialVersionUID;
-	}
+  @ApiModelProperty(value = "spu_id(冗余)")
+  @TableField("spu_id")
+  private Long spuId;
 
-	public Long getSkuId() {
-		return skuId;
-	}
+  @ApiModelProperty(value = "销售属性值id")
+  @TableField("sale_attr_value_id")
+  private Long saleAttrValueId;
 
-	public void setSkuId(Long skuId) {
-		this.skuId = skuId;
-	}
+  public static long getSerialVersionUID() {
+    return serialVersionUID;
+  }
 
-	public Long getSpuId() {
-		return spuId;
-	}
+  public Long getSkuId() {
+    return skuId;
+  }
 
-	public void setSpuId(Long spuId) {
-		this.spuId = spuId;
-	}
+  public void setSkuId(Long skuId) {
+    this.skuId = skuId;
+  }
 
-	public Long getSaleAttrValueId() {
-		return saleAttrValueId;
-	}
+  public Long getSpuId() {
+    return spuId;
+  }
 
-	public void setSaleAttrValueId(Long saleAttrValueId) {
-		this.saleAttrValueId = saleAttrValueId;
-	}
+  public void setSpuId(Long spuId) {
+    this.spuId = spuId;
+  }
+
+  public Long getSaleAttrValueId() {
+    return saleAttrValueId;
+  }
+
+  public void setSaleAttrValueId(Long saleAttrValueId) {
+    this.saleAttrValueId = saleAttrValueId;
+  }
 }
-

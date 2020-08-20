@@ -10,163 +10,145 @@ import lombok.Data;
 import java.math.BigDecimal;
 import java.util.List;
 
-/**
- * <p>
- * SkuInfo
- * </p>
- *
- */
+/** SkuInfo */
 @Data
 @ApiModel(description = "SkuInfo")
 @TableName("sku_info")
 public class SkuInfo extends BaseEntity {
-	
-	private static final long serialVersionUID = 1L;
-	
-	@ApiModelProperty(value = "商品id")
-	@TableField("spu_id")
-	private Long spuId;
 
-	@ApiModelProperty(value = "价格")
-	@TableField("price")
-	private BigDecimal price;
+  private static final long serialVersionUID = 1L;
+  @TableField(exist = false)
+  List<SkuImage> skuImageList;
+  @TableField(exist = false)
+  List<SkuAttrValue> skuAttrValueList;
+  @TableField(exist = false)
+  List<SkuSaleAttrValue> skuSaleAttrValueList;
+  @ApiModelProperty(value = "商品id")
+  @TableField("spu_id")
+  private Long spuId;
+  @ApiModelProperty(value = "价格")
+  @TableField("price")
+  private BigDecimal price;
+  @ApiModelProperty(value = "sku名称")
+  @TableField("sku_name")
+  private String skuName;
+  @ApiModelProperty(value = "商品规格描述")
+  @TableField("sku_desc")
+  private String skuDesc;
+  @ApiModelProperty(value = "重量")
+  @TableField("weight")
+  private String weight;
+  @ApiModelProperty(value = "品牌(冗余)")
+  @TableField("tm_id")
+  private Long tmId;
+  @ApiModelProperty(value = "三级分类id（冗余)")
+  @TableField("category3_id")
+  private Long category3Id;
+  @ApiModelProperty(value = "默认显示图片(冗余)")
+  @TableField("sku_default_img")
+  private String skuDefaultImg;
+  // 商品的上架，下架操作
+  @ApiModelProperty(value = "是否销售（1：是 0：否）")
+  @TableField("is_sale")
+  private Integer isSale;
 
-	@ApiModelProperty(value = "sku名称")
-	@TableField("sku_name")
-	private String skuName;
+  public static long getSerialVersionUID() {
+    return serialVersionUID;
+  }
 
-	@ApiModelProperty(value = "商品规格描述")
-	@TableField("sku_desc")
-	private String skuDesc;
+  public Long getSpuId() {
+    return spuId;
+  }
 
-	@ApiModelProperty(value = "重量")
-	@TableField("weight")
-	private String weight;
+  public void setSpuId(Long spuId) {
+    this.spuId = spuId;
+  }
 
-	@ApiModelProperty(value = "品牌(冗余)")
-	@TableField("tm_id")
-	private Long tmId;
+  public BigDecimal getPrice() {
+    return price;
+  }
 
-	@ApiModelProperty(value = "三级分类id（冗余)")
-	@TableField("category3_id")
-	private Long category3Id;
+  public void setPrice(BigDecimal price) {
+    this.price = price;
+  }
 
-	@ApiModelProperty(value = "默认显示图片(冗余)")
-	@TableField("sku_default_img")
-	private String skuDefaultImg;
+  public String getSkuName() {
+    return skuName;
+  }
 
-	// 商品的上架，下架操作
-	@ApiModelProperty(value = "是否销售（1：是 0：否）")
-	@TableField("is_sale")
-	private Integer isSale;
+  public void setSkuName(String skuName) {
+    this.skuName = skuName;
+  }
 
-	@TableField(exist = false)
-	List<SkuImage> skuImageList;
+  public String getSkuDesc() {
+    return skuDesc;
+  }
 
-	@TableField(exist = false)
-	List<SkuAttrValue> skuAttrValueList;
+  public void setSkuDesc(String skuDesc) {
+    this.skuDesc = skuDesc;
+  }
 
-	@TableField(exist = false)
-	List<SkuSaleAttrValue> skuSaleAttrValueList;
+  public String getWeight() {
+    return weight;
+  }
 
-	public static long getSerialVersionUID() {
-		return serialVersionUID;
-	}
+  public void setWeight(String weight) {
+    this.weight = weight;
+  }
 
-	public Long getSpuId() {
-		return spuId;
-	}
+  public Long getTmId() {
+    return tmId;
+  }
 
-	public void setSpuId(Long spuId) {
-		this.spuId = spuId;
-	}
+  public void setTmId(Long tmId) {
+    this.tmId = tmId;
+  }
 
-	public BigDecimal getPrice() {
-		return price;
-	}
+  public Long getCategory3Id() {
+    return category3Id;
+  }
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
+  public void setCategory3Id(Long category3Id) {
+    this.category3Id = category3Id;
+  }
 
-	public String getSkuName() {
-		return skuName;
-	}
+  public String getSkuDefaultImg() {
+    return skuDefaultImg;
+  }
 
-	public void setSkuName(String skuName) {
-		this.skuName = skuName;
-	}
+  public void setSkuDefaultImg(String skuDefaultImg) {
+    this.skuDefaultImg = skuDefaultImg;
+  }
 
-	public String getSkuDesc() {
-		return skuDesc;
-	}
+  public Integer getIsSale() {
+    return isSale;
+  }
 
-	public void setSkuDesc(String skuDesc) {
-		this.skuDesc = skuDesc;
-	}
+  public void setIsSale(Integer isSale) {
+    this.isSale = isSale;
+  }
 
-	public String getWeight() {
-		return weight;
-	}
+  public List<SkuImage> getSkuImageList() {
+    return skuImageList;
+  }
 
-	public void setWeight(String weight) {
-		this.weight = weight;
-	}
+  public void setSkuImageList(List<SkuImage> skuImageList) {
+    this.skuImageList = skuImageList;
+  }
 
-	public Long getTmId() {
-		return tmId;
-	}
+  public List<SkuAttrValue> getSkuAttrValueList() {
+    return skuAttrValueList;
+  }
 
-	public void setTmId(Long tmId) {
-		this.tmId = tmId;
-	}
+  public void setSkuAttrValueList(List<SkuAttrValue> skuAttrValueList) {
+    this.skuAttrValueList = skuAttrValueList;
+  }
 
-	public Long getCategory3Id() {
-		return category3Id;
-	}
+  public List<SkuSaleAttrValue> getSkuSaleAttrValueList() {
+    return skuSaleAttrValueList;
+  }
 
-	public void setCategory3Id(Long category3Id) {
-		this.category3Id = category3Id;
-	}
-
-	public String getSkuDefaultImg() {
-		return skuDefaultImg;
-	}
-
-	public void setSkuDefaultImg(String skuDefaultImg) {
-		this.skuDefaultImg = skuDefaultImg;
-	}
-
-	public Integer getIsSale() {
-		return isSale;
-	}
-
-	public void setIsSale(Integer isSale) {
-		this.isSale = isSale;
-	}
-
-	public List<SkuImage> getSkuImageList() {
-		return skuImageList;
-	}
-
-	public void setSkuImageList(List<SkuImage> skuImageList) {
-		this.skuImageList = skuImageList;
-	}
-
-	public List<SkuAttrValue> getSkuAttrValueList() {
-		return skuAttrValueList;
-	}
-
-	public void setSkuAttrValueList(List<SkuAttrValue> skuAttrValueList) {
-		this.skuAttrValueList = skuAttrValueList;
-	}
-
-	public List<SkuSaleAttrValue> getSkuSaleAttrValueList() {
-		return skuSaleAttrValueList;
-	}
-
-	public void setSkuSaleAttrValueList(List<SkuSaleAttrValue> skuSaleAttrValueList) {
-		this.skuSaleAttrValueList = skuSaleAttrValueList;
-	}
+  public void setSkuSaleAttrValueList(List<SkuSaleAttrValue> skuSaleAttrValueList) {
+    this.skuSaleAttrValueList = skuSaleAttrValueList;
+  }
 }
-

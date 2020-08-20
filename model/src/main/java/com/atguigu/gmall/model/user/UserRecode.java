@@ -7,29 +7,29 @@ import java.io.Serializable;
 @Data
 public class UserRecode implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-	private Long skuId;
-	
-	private String userId;
+  private Long skuId;
 
-	public static long getSerialVersionUID() {
-		return serialVersionUID;
-	}
+  private String userId;
 
-	public Long getSkuId() {
-		return skuId;
-	}
+  public static long getSerialVersionUID() {
+    return serialVersionUID;
+  }
 
-	public void setSkuId(Long skuId) {
-		this.skuId = skuId;
-	}
+  public Long getSkuId() {
+    return skuId;
+  }
 
-	public String getUserId() {
-		return userId;
-	}
+  public void setSkuId(Long skuId) {
+    this.skuId = skuId;
+  }
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+  public String getUserId() {
+    return userId;
+  }
+
+  public void setUserId(String userId) {
+    this.userId = userId;
+  }
 }
