@@ -2,7 +2,9 @@ package com.atguigu.gmall.product.controller;
 
 import com.atguigu.gmall.common.result.Result;
 import com.atguigu.gmall.model.product.BaseSaleAttr;
+import com.atguigu.gmall.model.product.SpuImage;
 import com.atguigu.gmall.model.product.SpuInfo;
+import com.atguigu.gmall.model.product.SpuSaleAttr;
 import com.atguigu.gmall.product.service.SpuInfoService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -20,6 +22,20 @@ import java.util.List;
 public class SpuApiController {
 	@Autowired
 	SpuInfoService spuInfoService;
+
+	@RequestMapping("spuImageList/{spuId}")
+	public Result spuImageList(@PathVariable String spuId){
+
+		List<SpuImage> spuImages = spuInfoService.spuImageList(spuId);
+		return Result.ok(spuImages);
+	}
+
+	@RequestMapping("spuSaleAttrList/{spuId}")
+	public Result spuSaleAttrList(@PathVariable String spuId){
+
+		List<SpuSaleAttr> spuSaleAttrs = spuInfoService.spuSaleAttrList(spuId);
+		return Result.ok(spuSaleAttrs);
+	}
 
 	@RequestMapping("saveSpuInfo")
 	public Result saveSpuInfo(@RequestBody SpuInfo spuInfo){

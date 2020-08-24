@@ -40,6 +40,8 @@ public class FileUploadApiController {
 
 		// 返回url
 		String url = "http://192.168.200.128:8080";
+//		String url = "http://192.168.222.2:8080";
+
 		for (String string : strings) {
 			url = url + "/"+string;
 		}

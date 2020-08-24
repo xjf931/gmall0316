@@ -82,4 +82,33 @@ public class SpuInfoServiceImpl implements SpuInfoService {
 		}
 
 	}
+
+	@Override
+	public List<SpuImage> spuImageList(String spuId) {
+
+		QueryWrapper<SpuImage> queryWrapper = new QueryWrapper<>();
+		queryWrapper.eq("spu_id",spuId);
+		List<SpuImage> spuImages = spuImageMapper.selectList(queryWrapper);
+
+		return spuImages;
+	}
+
+	@Override
+	public List<SpuSaleAttr> spuSaleAttrList(String spuId) {
+		QueryWrapper<SpuSaleAttr> queryWrapper = new QueryWrapper<>();
+		queryWrapper.eq("spu_id",spuId);
+
+		List<SpuSaleAttr> spuSaleAttrs = spuSaleAttrMapper.selectList(queryWrapper);
+
+		for (SpuSaleAttr spuSaleAttr : spuSaleAttrs) {
+			Long baseSaleAttrId = spuSaleAttr.getBaseSaleAttrId();
+			QueryWrapper<SpuSaleAttrValue> spuSaleAttrValueQueryWrapper = new QueryWrapper<>();
+			spuSaleAttrValueQueryWrapper.eq("spu_id",spuId);
+			spuSaleAttrValueQueryWrapper.eq("base_sale_attr_id",baseSaleAttrId);
+			List<SpuSaleAttrValue> spuSaleAttrValues = spuSaleAttrValueMapper.selectList(spuSaleAttrValueQueryWrapper);
+			spuSaleAttr.setSpuSaleAttrValueList(spuSaleAttrValues);
+		}
+
+		return spuSaleAttrs;
+	}
 }
