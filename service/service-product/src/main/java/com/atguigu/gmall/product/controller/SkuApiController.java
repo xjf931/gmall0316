@@ -16,6 +16,11 @@ public class SkuApiController {
 
 	@Autowired
 	SkuInfoService skuInfoService;
+//	@RequestMapping("saveSkuInfo")
+//	public Result saveSkuInfo(@RequestBody SkuInfo skuInfo){
+//		skuInfoService.saveSkuInfo(skuInfo);
+//		return Result.ok();
+//	}
 
 	@RequestMapping("cancelSale/{skuId}")
 	public Result cancelSale(@PathVariable String skuId){

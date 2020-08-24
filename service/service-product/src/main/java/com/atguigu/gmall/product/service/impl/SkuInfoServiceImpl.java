@@ -57,8 +57,6 @@ public class SkuInfoServiceImpl implements SkuInfoService {
 
 	@Override
 	public IPage<SkuInfo> list(Page<SkuInfo> pageParam) {
-
-		// 分页查询
 		IPage<SkuInfo> skuInfoIPage = skuInfoMapper.selectPage(pageParam, null);
 		return skuInfoIPage;
 	}
@@ -71,8 +69,6 @@ public class SkuInfoServiceImpl implements SkuInfoService {
 		skuInfo.setIsSale(0);
 		skuInfoMapper.updateById(skuInfo);
 
-		// 同步到nosql
-
 	}
 
 	@Override
@@ -81,7 +77,5 @@ public class SkuInfoServiceImpl implements SkuInfoService {
 		skuInfo.setId(Long.parseLong(skuId));
 		skuInfo.setIsSale(1);
 		skuInfoMapper.updateById(skuInfo);
-
-		// 同步到nosql
 	}
 }
