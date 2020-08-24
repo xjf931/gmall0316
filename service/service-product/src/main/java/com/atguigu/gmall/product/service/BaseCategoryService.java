@@ -11,5 +11,5 @@ public interface BaseCategoryService {
 
   List<BaseCategory2> getCategory2(String category1Id);
 
-	List<BaseCategory3> getCategory3(String category2Id);
+  List<BaseCategory3> getCategory3(String category2Id);
 }
