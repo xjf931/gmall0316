@@ -1,0 +1,5 @@
+    <artifactId>web</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>web-all</module>
+    </modules>
