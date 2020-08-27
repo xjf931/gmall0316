@@ -19,4 +19,7 @@ public interface SpuInfoService {
 	List<SpuImage> spuImageList(String spuId);
 
 	List<SpuSaleAttr> spuSaleAttrList(String spuId);
+
+
+	List<SpuSaleAttr> getMySpuSaleAttrs(Long spuId);
 }

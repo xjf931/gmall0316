@@ -3,9 +3,11 @@ package com.atguigu.gmall.product.service.impl;
 import com.atguigu.gmall.model.product.BaseCategory1;
 import com.atguigu.gmall.model.product.BaseCategory2;
 import com.atguigu.gmall.model.product.BaseCategory3;
+import com.atguigu.gmall.model.product.BaseCategoryView;
 import com.atguigu.gmall.product.mapper.BaseCategory1Mapper;
 import com.atguigu.gmall.product.mapper.BaseCategory2Mapper;
 import com.atguigu.gmall.product.mapper.BaseCategory3Mapper;
+import com.atguigu.gmall.product.mapper.BaseCategoryViewMapper;
 import com.atguigu.gmall.product.service.BaseCategoryService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,9 @@ public class BaseCategoryServiceImpl implements BaseCategoryService{
 
   @Autowired
   BaseCategory3Mapper baseCategory3Mapper;
+
+  @Autowired
+  BaseCategoryViewMapper baseCategoryViewMapper;
 
   @Override
   public List<BaseCategory1> getCategory1() {
@@ -46,5 +51,13 @@ public class BaseCategoryServiceImpl implements BaseCategoryService{
     queryWrapper.eq("category2_id",category2Id);
     List<BaseCategory3> baseCategory3s = baseCategory3Mapper.selectList(queryWrapper);
     return baseCategory3s;
+  }
+
+  @Override
+  public BaseCategoryView getCategoryView(String category3Id) {
+
+    BaseCategoryView baseCategoryView = baseCategoryViewMapper.selectById(category3Id);
+
+    return baseCategoryView;
   }
 }
