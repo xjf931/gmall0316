@@ -66,10 +66,18 @@ public class ProductApiController {
     BigDecimal price = skuInfoService.getSkuPrice(skuId);
     return price;
   };
-  @RequestMapping("inner/getMySpuSaleAttrs/{spuId}")
-  List<SpuSaleAttr> getMySpuSaleAttrs(@PathVariable("spuId") Long spuId){
-    List<SpuSaleAttr> spuSaleAttrs = spuInfoService.getMySpuSaleAttrs(spuId);
+  @RequestMapping("inner/getMySpuSaleAttrs/{spuId}/{skuId}")
+  List<SpuSaleAttr> getMySpuSaleAttrs(@PathVariable("spuId") Long spuId,@PathVariable("skuId") Long skuId){
+    List<SpuSaleAttr> spuSaleAttrs = spuInfoService.getSpuSaleAttrListCheckBySku(spuId,skuId);//getMySpuSaleAttrs(spuId);
     return spuSaleAttrs;
   };
+  @RequestMapping("inner/getSkuValueIdsMap/{spuId}")
+  Map<String,String> getSkuValueIdsMap(@PathVariable("spuId") Long spuId){
+    Map<String,String> valueIdsMap = skuInfoService.getSkuValueIdsMap(spuId);
+
+    return valueIdsMap;
+  }
+
+
 
 }

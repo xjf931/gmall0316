@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 import java.math.BigDecimal;
+import java.util.Map;
 
 public interface SkuInfoService {
 	void saveSkuInfo(SkuInfo skuInfo);
@@ -18,4 +19,6 @@ public interface SkuInfoService {
     SkuInfo getSkuInfo(String skuId);
 
 	BigDecimal getSkuPrice(String skuId);
+
+    Map<String, String> getSkuValueIdsMap(Long spuId);
 }

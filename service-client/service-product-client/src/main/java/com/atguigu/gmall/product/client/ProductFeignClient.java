@@ -24,6 +24,9 @@ public interface ProductFeignClient {
     @RequestMapping("api/product/inner/getSkuPrice/{skuId}")
     BigDecimal getSkuPrice(@PathVariable("skuId") String skuId);
 
-    @RequestMapping("api/product/inner/getMySpuSaleAttrs/{spuId}")
-    List<SpuSaleAttr> getMySpuSaleAttrs(@PathVariable("spuId") Long spuId);
+    @RequestMapping("api/product/inner/getMySpuSaleAttrs/{spuId}/{skuId}")
+    List<SpuSaleAttr> getMySpuSaleAttrs(@PathVariable("spuId") Long spuId,@PathVariable("skuId") Long skuId);
+
+    @RequestMapping("api/product/inner/getSkuValueIdsMap/{spuId}")
+    Map<String,String> getSkuValueIdsMap(@PathVariable("spuId") Long spuId);
 }
