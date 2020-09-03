@@ -20,6 +20,12 @@ public class ListApiController {
     @Autowired
     ListService listService;
 
+    @RequestMapping("hotScore/{skuId}")
+    void hotScore(@PathVariable("skuId") String skuId){
+
+        listService.hotScore(skuId);
+    }
+
     @RequestMapping("createIndex")
     public Result createIndex(){
 

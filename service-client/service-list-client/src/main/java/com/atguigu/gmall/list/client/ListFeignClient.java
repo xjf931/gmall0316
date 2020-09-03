@@ -13,4 +13,7 @@ public interface ListFeignClient {
 
     @RequestMapping("api/list/onSale/{skuId}")
     void onSale(@PathVariable("skuId") String skuId);
+
+    @RequestMapping("api/list/hotScore/{skuId}")
+    void hotScore(@PathVariable("skuId") String skuId);
 }

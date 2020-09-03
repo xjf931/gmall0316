@@ -54,6 +54,7 @@ package com.atguigu.gmall.item.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.atguigu.gmall.item.service.ItemService;
+import com.atguigu.gmall.list.client.ListFeignClient;
 import com.atguigu.gmall.model.product.BaseCategoryView;
 import com.atguigu.gmall.model.product.SkuInfo;
 import com.atguigu.gmall.model.product.SpuSaleAttr;
@@ -83,12 +84,15 @@ public class ItemServiceImpl implements ItemService {
     @Autowired
     ThreadPoolExecutor threadPoolExecutor;
 
+    @Autowired
+    ListFeignClient listFeignClient;
 
     @Override
     public Map<String, Object> getItem(String skuId)  {
         Map<String, Object> map = new HashMap<>();
         //map = getItemBak(skuId);
         map = getItemThread(skuId);
+
         return map;
     }
 
@@ -146,9 +150,16 @@ public class ItemServiceImpl implements ItemService {
                 map.put("valuesSkuJson", JSON.toJSONString(valueIdsmap));
             }
         },threadPoolExecutor);
-
+        // 商品热度值更新
+        CompletableFuture<Void> completableFutureHotScore = CompletableFuture.runAsync(new Runnable() {
+            @Override
+            public void run() {
+//调用list模块的hotscore接口,更新热度值
+                listFeignClient.hotScore(skuId);
+            }
+        },threadPoolExecutor);
         // 限制线程执行的组合
-        CompletableFuture.allOf(completableFutureSkuInfo,completableFuturePrice,completableFutureCategory,completableFutureSaleAttr,completableFutureValueIdsmap).join();
+        CompletableFuture.allOf(completableFutureSkuInfo,completableFuturePrice,completableFutureCategory,completableFutureSaleAttr,completableFutureValueIdsmap,completableFutureHotScore).join();
         long currentTimeMillisEnd = System.currentTimeMillis();
 
         System.out.println("多线程："+(currentTimeMillisEnd - currentTimeMillisStart));

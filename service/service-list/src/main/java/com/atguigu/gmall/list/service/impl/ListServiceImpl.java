@@ -7,10 +7,12 @@ import com.atguigu.gmall.model.list.SearchAttr;
 import com.atguigu.gmall.model.product.*;
 import com.atguigu.gmall.product.client.ProductFeignClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -22,6 +24,9 @@ public class ListServiceImpl implements ListService {
 
     @Autowired
     ProductFeignClient productFeignClient;
+
+    @Autowired
+    RedisTemplate redisTemplate;
 
     @Override
     public void cancelSale(String skuId) {
@@ -82,5 +87,22 @@ public class ListServiceImpl implements ListService {
 
         goodsElasticsearchRepository.save(goods);
 
+    }
+
+    @Override
+    public void hotScore(String skuId) {
+        Long hotScore = 0l;
+//        查询原来的热度值
+        hotScore = redisTemplate.opsForZSet().incrementScore("hotScore","sku:" + skuId,1).longValue();
+//        热度值加一
+//        hotScore++;
+//        判断是否达到同步的阈值
+        if (hotScore%10==0){
+//            修改es
+            Optional<Goods> goodsOptional = goodsElasticsearchRepository.findById(Long.parseLong(skuId));
+            Goods goods = goodsOptional.get();
+            goods.setHotScore(hotScore);
+            goodsElasticsearchRepository.save(goods);
+        }
     }
 }
