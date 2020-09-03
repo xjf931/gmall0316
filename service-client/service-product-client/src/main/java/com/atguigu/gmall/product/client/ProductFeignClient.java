@@ -2,9 +2,7 @@ package com.atguigu.gmall.product.client;
 
 
 import com.atguigu.gmall.common.result.Result;
-import com.atguigu.gmall.model.product.BaseCategoryView;
-import com.atguigu.gmall.model.product.SkuInfo;
-import com.atguigu.gmall.model.product.SpuSaleAttr;
+import com.atguigu.gmall.model.product.*;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,4 +31,11 @@ public interface ProductFeignClient {
 
     @RequestMapping("api/product/getBaseCategoryList")
     Result getBaseCategoryList();
+
+    @RequestMapping("api/product/inner/getTrademark/{tmId}")
+    BaseTrademark getTrademark(@PathVariable("tmId") Long tmId);
+
+    @RequestMapping("api/product/inner/getAttrList/{skuId}")
+    List<BaseAttrInfo> getAttrList(@PathVariable("skuId") String skuId);
+
 }

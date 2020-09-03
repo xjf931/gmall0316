@@ -2,6 +2,7 @@ package com.atguigu.gmall.product.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.atguigu.gmall.common.cache.GmallCache;
+import com.atguigu.gmall.list.client.ListFeignClient;
 import com.atguigu.gmall.model.product.SkuAttrValue;
 import com.atguigu.gmall.model.product.SkuImage;
 import com.atguigu.gmall.model.product.SkuInfo;
@@ -42,6 +43,9 @@ public class SkuInfoServiceImpl implements SkuInfoService {
 	@Autowired
 	RedisTemplate redisTemplate;
 
+	@Autowired
+	ListFeignClient listFeignClient;
+
 	@Override
 	public void saveSkuInfo(SkuInfo skuInfo) {
 
@@ -81,6 +85,8 @@ public class SkuInfoServiceImpl implements SkuInfoService {
 		skuInfo.setId(Long.parseLong(skuId));
 		skuInfo.setIsSale(0);
 		skuInfoMapper.updateById(skuInfo);
+//		同步到nosql
+		listFeignClient.cancelSale(skuId);
 
 	}
 
@@ -90,6 +96,9 @@ public class SkuInfoServiceImpl implements SkuInfoService {
 		skuInfo.setId(Long.parseLong(skuId));
 		skuInfo.setIsSale(1);
 		skuInfoMapper.updateById(skuInfo);
+
+		listFeignClient.onSale(skuId);
+
 	}
 	@GmallCache
 	@Override

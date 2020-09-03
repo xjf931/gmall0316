@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @ComponentScan({"com.atguigu.gmall"})
 @SpringBootApplication
+@EnableFeignClients(basePackages= {"com.atguigu.gmall"})
 public class ServiceProductApplication {
 
   public static void main(String[] args) {

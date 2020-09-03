@@ -3,12 +3,8 @@ package com.atguigu.gmall.product.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.atguigu.gmall.common.result.Result;
-import com.atguigu.gmall.model.product.BaseCategoryView;
-import com.atguigu.gmall.model.product.SkuInfo;
-import com.atguigu.gmall.model.product.SpuSaleAttr;
-import com.atguigu.gmall.product.service.BaseCategoryService;
-import com.atguigu.gmall.product.service.SkuInfoService;
-import com.atguigu.gmall.product.service.SpuInfoService;
+import com.atguigu.gmall.model.product.*;
+import com.atguigu.gmall.product.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,6 +27,26 @@ public class ProductApiController {
 
   @Autowired
   SpuInfoService spuInfoService;
+
+  @Autowired
+  BaseTrademarkService baseTrademarkService;
+
+  @Autowired
+  BaseAttrInfoService baseAttrInfoService;
+
+  @RequestMapping("inner/getTrademark/{tmId}")
+  BaseTrademark getTrademark(@PathVariable("tmId") Long tmId){
+    BaseTrademark baseTrademark = baseTrademarkService.getTrademark(tmId);
+
+    return baseTrademark;
+  }
+
+  @RequestMapping("inner/getAttrList/{skuId}")
+  List<BaseAttrInfo> getAttrList(@PathVariable("skuId") String skuId){
+    List<BaseAttrInfo> baseAttrInfos = baseAttrInfoService.getAttrList(skuId);
+
+    return baseAttrInfos;
+  }
 
 
   @RequestMapping("testProductApi")

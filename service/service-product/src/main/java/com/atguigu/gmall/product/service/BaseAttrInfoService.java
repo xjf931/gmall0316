@@ -11,4 +11,6 @@ public interface BaseAttrInfoService {
 	void saveAttrInfo(BaseAttrInfo baseAttrInfo);
 
 	List<BaseAttrValue> getAttrValueList(String attrId);
+
+    List<BaseAttrInfo> getAttrList(String skuId);
 }

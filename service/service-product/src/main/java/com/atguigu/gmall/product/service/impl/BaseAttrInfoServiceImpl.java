@@ -4,6 +4,7 @@ import com.atguigu.gmall.model.product.BaseAttrInfo;
 import com.atguigu.gmall.model.product.BaseAttrValue;
 import com.atguigu.gmall.product.mapper.BaseAttrInfoMapper;
 import com.atguigu.gmall.product.mapper.BaseAttrValueMapper;
+import com.atguigu.gmall.product.mapper.SkuAttrValueMapper;
 import com.atguigu.gmall.product.service.BaseAttrInfoService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,10 @@ public class BaseAttrInfoServiceImpl implements BaseAttrInfoService {
 //	随后编写对应的BaseAttrValueMapper接口
 	@Autowired
 	BaseAttrValueMapper baseAttrValueMapper;
+
+	@Autowired
+	SkuAttrValueMapper skuAttrValueMapper;
+
 	@Override
 	public List<BaseAttrInfo> attrInfoList(String category1Id, String category2Id, String category3Id) {
 
@@ -74,5 +79,13 @@ public class BaseAttrInfoServiceImpl implements BaseAttrInfoService {
 		queryWrapperValue.eq("attr_id", attrId);
 		List<BaseAttrValue> baseAttrValues = baseAttrValueMapper.selectList(queryWrapperValue);
 		return baseAttrValues;
+	}
+
+	@Override
+	public List<BaseAttrInfo> getAttrList(String skuId) {
+
+		List<BaseAttrInfo> baseAttrInfos = skuAttrValueMapper.selectBaseAttrInfoListBySkuId(skuId);
+
+		return baseAttrInfos;
 	}
 }
