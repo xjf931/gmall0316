@@ -4,11 +4,13 @@ package com.atguigu.gmall.list.controller;
 import com.atguigu.gmall.common.result.Result;
 import com.atguigu.gmall.list.service.ListService;
 import com.atguigu.gmall.model.list.Goods;
+import com.atguigu.gmall.model.list.SearchParam;
+import com.atguigu.gmall.model.list.SearchResponseVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/list/")
@@ -19,6 +21,13 @@ public class ListApiController {
 
     @Autowired
     ListService listService;
+
+    @PostMapping("list")
+    Result list(@RequestBody SearchParam searchParam){
+        SearchResponseVo searchResponseVo = listService.list(searchParam);
+        return Result.ok(searchResponseVo);
+    };
+
 
     @RequestMapping("hotScore/{skuId}")
     void hotScore(@PathVariable("skuId") String skuId){
